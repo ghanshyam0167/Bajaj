@@ -70,6 +70,53 @@ async function handleFunctionBFHL(req, res) {
 
 } 
 
+async function handleFunctionLanding(req, res) {
+  return res.status(200).json({
+    message: "👋 Welcome to the BFHL API",
+    description:
+      "This API processes an array of values and returns odd numbers, even numbers, alphabets, special characters, sum of numbers, and a concatenated string.",
+
+    available_endpoints: {
+      landing: {
+        method: "GET",
+        description: "Shows API information and usage instructions",
+        localhost: "http://localhost:2911/",
+        vercel: "https://bajaj-rho-peach.vercel.app/"
+      },
+
+      bfhl: {
+        method: "POST",
+        description: "Main API endpoint to process input data",
+        localhost: "http://localhost:2911/bfhl",
+        vercel: "https://bajaj-rho-peach.vercel.app/bfhl",
+        example_request_body: {
+          data: ["1", "2", "a", "B", "@", "9"]
+        }
+      },
+
+      health: {
+        method: "GET",
+        description: "Health check endpoint",
+        localhost: "http://localhost:2911/health",
+        vercel: "https://bajaj-rho-peach.vercel.app/health"
+      }
+    },
+
+    how_to_use: {
+      step_1: "Send a POST request to /bfhl",
+      step_2: "Set header Content-Type: application/json",
+      step_3: "Pass an array in the 'data' field",
+      step_4: "Receive processed response"
+    },
+
+    author: {
+      name: "Ghanshyam Agrawal",
+      email: "ghanshyamagrawal456@gmail.com"
+    }
+  });
+}
+
+
 async function handleFunctionHealth(req, res) {
     const response = {
       name : "Ghanshyam Agrawal",
@@ -83,5 +130,6 @@ async function handleFunctionHealth(req, res) {
 
 module.exports = {
     handleFunctionBFHL,
-    handleFunctionHealth
+    handleFunctionHealth,
+    handleFunctionLanding
 }
